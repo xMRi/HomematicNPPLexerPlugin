@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\HomeMaticNPPLexerPlugin.cpp">
+      <Filter>Template</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PluginDefinition.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DockingFeature\StaticDialog.cpp">
+      <Filter>Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DockingFeature\GoToLineDlg.cpp">
+      <Filter>Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Lexer\Lexer.cxx">
+      <Filter>Lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\Accessor.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterCategory.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterSet.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\DefaultLexer.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\InList.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexAccessor.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerBase.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerModule.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerSimple.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\PropSetSimple.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\StyleContext.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\WordList.cxx">
+      <Filter>lexilla\lexlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\menuCmdID.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Notepad_plus_msgs.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PluginInterface.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\resource.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Sci_Position.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scintilla.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PluginDefinition.h">
+      <Filter>Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\dockingResource.h">
+      <Filter>Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\DockingDlgInterface.h">
+      <Filter>Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\Window.h">
+      <Filter>Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\StaticDialog.h">
+      <Filter>Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\GoToLineDlg.h">
+      <Filter>Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DockingFeature\Docking.h">
+      <Filter>Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerModule.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\Accessor.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\CatalogueModules.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterCategory.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterSet.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\DefaultLexer.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\InList.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexAccessor.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerBase.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerSimple.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\OptionSet.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\PropSetSimple.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\SparseState.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\StringCopy.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\StyleContext.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\SubStyles.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\WordList.h">
+      <Filter>lexilla\lexlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\scintilla\ILexer.h">
+      <Filter>Scintilla</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\scintilla\Sci_Position.h">
+      <Filter>Scintilla</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\scintilla\SciLexer.h">
+      <Filter>Scintilla</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\scintilla\Scintilla.h">
+      <Filter>Scintilla</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\HomeMaticNPPLexerPlugin.rc">
+      <Filter>Template</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\src\DockingFeature\goLine.rc">
+      <Filter>Docking</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Template">
+      <UniqueIdentifier>{6aeac777-6cd1-4e62-bf7f-cab61cbd2187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugin">
+      <UniqueIdentifier>{bdad2a2c-47ec-47fe-8bec-8ab79b5a6e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Docking">
+      <UniqueIdentifier>{0f4759e8-4f42-4058-a7b7-0336e6adc2e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lexer">
+      <UniqueIdentifier>{923da182-7200-44f4-9767-70bc6cadaf4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scintilla">
+      <UniqueIdentifier>{43d43adb-00ac-41a2-9c73-c4d331fcd101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lexilla">
+      <UniqueIdentifier>{456751e9-4d10-4607-bebc-41993e2ea6e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lexilla\lexlib">
+      <UniqueIdentifier>{4e7d567a-150a-4fec-9672-5682339b673f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\src\Lexer\Lexer.xml">
+      <Filter>Lexer</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

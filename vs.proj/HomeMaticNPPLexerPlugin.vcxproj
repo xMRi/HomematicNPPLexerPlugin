@@ -27,6 +27,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\Accessor.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\CatalogueModules.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterCategory.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterSet.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\DefaultLexer.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\InList.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexAccessor.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerBase.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerModule.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerSimple.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\OptionSet.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\PropSetSimple.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\SparseState.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\StringCopy.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\StyleContext.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\SubStyles.h" />
+    <ClInclude Include="..\..\notepad-plus-plus\lexilla\lexlib\WordList.h" />
     <ClInclude Include="..\src\DockingFeature\Docking.h" />
     <ClInclude Include="..\src\DockingFeature\DockingDlgInterface.h" />
     <ClInclude Include="..\src\DockingFeature\dockingResource.h" />
@@ -39,61 +56,84 @@
     <ClInclude Include="..\src\PluginDefinition.h" />
     <ClInclude Include="..\src\PluginInterface.h" />
     <ClInclude Include="..\src\Scintilla.h" />
+    <ClInclude Include="..\src\scintilla\ILexer.h" />
+    <ClInclude Include="..\src\scintilla\SciLexer.h" />
+    <ClInclude Include="..\src\scintilla\Scintilla.h" />
+    <ClInclude Include="..\src\scintilla\Sci_Position.h" />
     <ClInclude Include="..\src\Sci_Position.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\Accessor.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterCategory.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\CharacterSet.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\DefaultLexer.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\InList.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexAccessor.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerBase.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerModule.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\LexerSimple.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\PropSetSimple.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\StyleContext.cxx" />
+    <ClCompile Include="..\..\notepad-plus-plus\lexilla\lexlib\WordList.cxx" />
     <ClCompile Include="..\src\DockingFeature\GoToLineDlg.cpp" />
     <ClCompile Include="..\src\DockingFeature\StaticDialog.cpp" />
-    <ClCompile Include="..\src\NppPluginDemo.cpp" />
+    <ClCompile Include="..\src\HomeMaticNPPLexerPlugin.cpp" />
+    <ClCompile Include="..\src\Lexer\Lexer.cxx" />
     <ClCompile Include="..\src\PluginDefinition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\src\DockingFeature\goLine.rc" />
-    <ResourceCompile Include="..\src\NppPluginDemo.rc" />
+    <ResourceCompile Include="..\src\HomeMaticNPPLexerPlugin.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\src\Lexer\Lexer.xml">
+      <DeploymentContent>true</DeploymentContent>
+    </Xml>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9D04DBD5-E12E-44E0-A683-6F43F21D533B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NppPluginTemplate</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>HomeMaticNPPLexerPlugin</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -124,21 +164,30 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\Bin\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>HomeMaticNPPLexer</TargetName>
+    <IntDir>$(SolutionDir)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(ShortProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin64\</OutDir>
+    <OutDir>..\Bin\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>HomeMaticNPPLexer</TargetName>
+    <IntDir>$(SolutionDir)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\arm64\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(ShortProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -164,12 +213,22 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>..\src\scintilla;..\src\lexilla\lexlib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetPath)" "$(ProgramFiles)\NotePad++\plugins\$(TargetName)\"
+copy  "$(OutputPath)\$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\config\"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy "..\src\Lexer\Lexer.xml" $(OutputPath)\$(TargetName)".xml
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -220,6 +279,8 @@ copy ..\readme.FIRST ..\bin\readme.FIRST</Command>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NPPPLUGINTEMPLATE_EXPORTS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>..\src\scintilla;..\src\lexilla\lexlib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -230,9 +291,13 @@ copy ..\readme.FIRST ..\bin\readme.FIRST</Command>
       <ImportLibrary>$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\license.txt ..\bin64\license.txt
-copy ..\readme.FIRST ..\bin64\readme.FIRST</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy "..\src\Lexer\Lexer.xml" $(OutputPath)\$(TargetName)".xml
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>

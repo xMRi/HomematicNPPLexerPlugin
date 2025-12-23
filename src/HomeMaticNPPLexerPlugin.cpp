@@ -66,7 +66,7 @@ extern "C" __declspec(dllexport) FuncItem * getFuncsArray(int *nbF)
 }
 
 
-extern "C" __declspec(dllexport) void beNotified(SCNotification *notifyCode)
+extern "C"  void beNotified(SCNotification *notifyCode)
 {
 	switch (notifyCode->nmhdr.code) 
 	{
