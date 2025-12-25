@@ -198,12 +198,21 @@
       </AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuildStep>
+      <Command>COPY "..\src\Lexer\Lexer.xml" "$(TargetDir)\$(TargetName)".xml
+</Command>
+      <Message>Copy Lexer XML</Message>
+      <Outputs>$(OutputPath)\$(TargetName).xml</Outputs>
+      <Inputs>..\src\Lexer\Lexer.xml</Inputs>
+      <RootFolder>..\src\Lexer\</RootFolder>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -222,15 +231,18 @@
       <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(ProgramFiles)\NotePad++\plugins\$(TargetName)\"
-copy  "$(OutputPath)\$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\config\"</Command>
+      <Command>IF NOT EXIST "$(ProgramFiles)\NotePad++\plugins\$(TargetName)" (md "$(ProgramFiles)\NotePad++\plugins\$(TargetName)")
+REPLACE "$(TargetPath)" "$(ProgramFiles)\NotePad++\plugins\$(TargetName)\"
+REPLACE "$(TargetDir)$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\Config\"</Command>
+      <Message>Copy to NotePad++ directory</Message>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
     <CustomBuildStep>
-      <Command>copy "..\src\Lexer\Lexer.xml" $(OutputPath)\$(TargetName)".xml</Command>
+      <Command>COPY "..\src\Lexer\Lexer.xml" "$(TargetDir)\$(TargetName)".xml
+</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copy Lexer XML</Message>
@@ -251,6 +263,7 @@ copy  "$(OutputPath)\$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\confi
       <TreatWarningAsError>true</TreatWarningAsError>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -269,6 +282,7 @@ copy  "$(OutputPath)\$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\confi
       </AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -279,9 +293,17 @@ copy  "$(OutputPath)\$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\confi
       <ImportLibrary>$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\license.txt ..\bin\license.txt
-copy ..\readme.FIRST ..\bin\readme.FIRST</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>COPY "..\src\Lexer\Lexer.xml" "$(TargetDir)\$(TargetName)".xml
+</Command>
+      <Message>Copy Lexer XML</Message>
+      <Outputs>$(OutputPath)\$(TargetName).xml</Outputs>
+      <Inputs>..\src\Lexer\Lexer.xml</Inputs>
+      <RootFolder>..\src\Lexer\</RootFolder>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -301,18 +323,21 @@ copy ..\readme.FIRST ..\bin\readme.FIRST</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>$(TargetName).lib</ImportLibrary>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>IF NOT EXIST "$(ProgramFiles)\NotePad++\plugins\$(TargetName)" (md "$(ProgramFiles)\NotePad++\plugins\$(TargetName)")
+REPLACE "$(TargetPath)" "$(ProgramFiles)\NotePad++\plugins\$(TargetName)\"
+REPLACE "$(TargetDir)$(TargetName).xml" "$(ProgramFiles)\NotePad++\plugins\Config\"</Command>
+      <Message>Copy to NotePad++ directory</Message>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
     <CustomBuildStep>
-      <Command>copy "..\src\Lexer\Lexer.xml" $(OutputPath)\$(TargetName)".xml</Command>
+      <Command>COPY "..\src\Lexer\Lexer.xml" "$(TargetDir)\$(TargetName)".xml
+</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copy Lexer XML</Message>
@@ -334,6 +359,7 @@ copy ..\readme.FIRST ..\bin\readme.FIRST</Command>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NPPPLUGINTEMPLATE_EXPORTS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

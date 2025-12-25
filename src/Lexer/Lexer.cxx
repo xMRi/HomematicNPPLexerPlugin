@@ -80,6 +80,7 @@ const int LXX_CONSTANTS = 10;
 const int LXX_CONSTANTS_OTHER = 11;
 const int LXX_REGAMETHODS = 12;
 const int LXX_VARIABLES = 13;
+const int LXX_OPERATOR2 = 14;
 
 constexpr int inactiveFlag = 0x40;
 
@@ -152,7 +153,8 @@ EXPORT_FUNCTION const char* CALLING_CONVENTION GetNameSpace()
 
 inline void SCI_METHOD LexerHomematic::Fold([[maybe_unused]] Sci_PositionU startPos, [[maybe_unused]] Sci_Position length, [[maybe_unused]] int initStyle, [[maybe_unused]] IDocument* pAccess)
 {
-	
+	// Code copied from file in NPP project, removed all options
+	// notepad-plus-plus\lexilla\lexers\LexCPP.cxx
 	LexAccessor styler(pAccess);
 
 	const Sci_PositionU endPos = startPos + length;
@@ -175,7 +177,7 @@ inline void SCI_METHOD LexerHomematic::Fold([[maybe_unused]] Sci_PositionU start
 		style = styleNext;
 		styleNext = MaskActive(styler.StyleAt(i + 1));
 		const bool atEOL = i == (lineStartNext-1);
-		if (style==LXX_OPERATOR) {
+		if (style==LXX_OPERATOR2) {
 			if (ch == '{') {
 				// Measure the minimum before a '{' to allow
 				// folding on "} else {"
@@ -254,8 +256,7 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 		StyleContext sc(startPos, length, LXX_DEFAULT, styler);
 
 		std::string word;
-		bool waitForComment = true;	
-		int phareenthesis = 0;
+		bool commenAllowed = true;	
 
 		// sc.More() checked at loop bottom
 		while(sc.More())
@@ -289,7 +290,7 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 			if (sc.atLineStart)
 			{
 				// On a line end, we stop with comments
-				waitForComment = true;
+				commenAllowed = true;
 				sc.SetState(LXX_DEFAULT);
 			}
 
@@ -381,7 +382,7 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 				{
 					sc.SetState(LXX_STRINGCONSTANT);
 				}
-				else if (waitForComment && sc.Match('!'))
+				else if (commenAllowed && sc.Match('!'))
 				{
 					sc.SetState(LXX_COMMENT);
 				}
@@ -423,40 +424,48 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 				{
 					// Start collecting the next word.
 					sc.SetState(LXX_WORD);
-					waitForComment = false;
+					commenAllowed = false;
 					word = sc.ch;				
 				}
 				else if (sc.Match(';'))
 				{
-					waitForComment = true;
-				}
-				else if (sc.Match('('))
-				{
-					++phareenthesis;
-				}
-				else if (sc.Match(')'))
-				{
-					--phareenthesis;
+					commenAllowed = true;
 				}
 				else
 				{
-					// Check for operator
-					static char const* ops[] = {
-						"{", "}", 
-						"==", "!=", "<>",
-						"=",
-						"<=", "<", ">=", ">", 
-						"+", "-", "*", "/", "%",
-						"&&", "||",
-						"!", "&", "|", "#", ".",
-					};
-					auto it = std::find_if(std::begin(ops), std::end(ops), [&sc](const auto& item) { return sc.Match(item); });
-					if (it!=std::end(ops))
 					{
-						sc.SetState(LXX_OPERATOR);
-						sc.ForwardBytes(strlen(*it)-1);
-						sc.ForwardSetState(LXX_DEFAULT);
-						continue;
+						// Check for operator
+						static char const* ops[] = {
+							"==", "!=", "<>",
+							"=",
+							"<=", "<", ">=", ">",
+							"+", "-", "*", "/", "%",
+							"&&", "||",
+							"!", "&", "|", "#", ".",
+						};
+						auto it = std::find_if(std::begin(ops), std::end(ops), [&sc](const auto& item) { return sc.Match(item); });
+						if (it!=std::end(ops))
+						{
+							sc.SetState(LXX_OPERATOR);
+							sc.ForwardBytes(strlen(*it)-1);
+							sc.ForwardSetState(LXX_DEFAULT);
+							continue;
+						}
+					}
+					{
+						static char const* ops2[] = {
+							"{", "}", "(", ")",
+						};
+						auto it = std::find_if(std::begin(ops2), std::end(ops2), [&sc](const auto& item) { return sc.Match(item); });
+						if (it!=std::end(ops2))
+						{
+							if (**it=='{' || **it=='}')
+								commenAllowed = true;
+							sc.SetState(LXX_OPERATOR2);
+							sc.ForwardBytes(strlen(*it)-1);
+							sc.ForwardSetState(LXX_DEFAULT);
+							continue;
+						}
 					}
 				}
 			}
