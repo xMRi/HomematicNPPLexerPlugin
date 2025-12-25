@@ -17,7 +17,7 @@
 
 #include "PluginDefinition.h"
 
-extern FuncItem funcItem[nbFunc];
+extern FuncItem funcItem[nbFunc+1];
 extern NppData nppData;
 
 

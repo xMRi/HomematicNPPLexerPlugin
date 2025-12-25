@@ -36,8 +36,7 @@ const TCHAR NPP_PLUGIN_NAME[] = TEXT("HomematicNPPLexer");
 //
 // Here define the number of your plugin commands
 //
-const int nbFunc = 2;
-
+const int nbFunc = 1;
 
 //
 // Initialization of your plugin data
@@ -70,7 +69,6 @@ bool setCommand(size_t index, TCHAR *cmdName, PFUNCPLUGINCMD pFunc, ShortcutKey 
 //
 // Your plugin command functions
 //
-void hello();
 void helloDlg();
 
 #endif //PLUGINDEFINITION_H

@@ -7,12 +7,6 @@
     <ClCompile Include="..\src\PluginDefinition.cpp">
       <Filter>Plugin</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\DockingFeature\StaticDialog.cpp">
-      <Filter>Docking</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\DockingFeature\GoToLineDlg.cpp">
-      <Filter>Docking</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Lexer\Lexer.cxx">
       <Filter>Lexer</Filter>
     </ClCompile>
@@ -82,12 +76,6 @@
       <Filter>Docking</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DockingFeature\Window.h">
-      <Filter>Docking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\DockingFeature\StaticDialog.h">
-      <Filter>Docking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\DockingFeature\GoToLineDlg.h">
       <Filter>Docking</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DockingFeature\Docking.h">
@@ -160,9 +148,6 @@
   <ItemGroup>
     <ResourceCompile Include="..\src\HomeMaticNPPLexerPlugin.rc">
       <Filter>Template</Filter>
-    </ResourceCompile>
-    <ResourceCompile Include="..\src\DockingFeature\goLine.rc">
-      <Filter>Docking</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
