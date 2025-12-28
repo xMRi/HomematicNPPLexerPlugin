@@ -23,8 +23,9 @@ The color and style definitions are closely aligned with SDV 5.0.
 * Correct parsing of comments (`!` character) and cares about operators starting with `!` to, like `!=`. Comments are allowed after a statement (ending `;`), or directly after a closing or open brace (`{`, `}`)
 * The folding feature is taken from the `LexCPP` from the NotePad++ project.
 * If a variable has the same name like a reserved name, it is formated as a variable, not as a define or constant.
-* **A real sepcial feature is the detection of undefined variables, similar as in SDV. . They are shown in red backround letters.
-  ![alt text](Pictures/MissingDefinition.png)
+* **A real sepcial feature is the detection of undefined variables, similar as in SDV. They are shown in red backround letters.
+
+![alt text](Pictures/MissingDefinition.png)
   
 ## Used Code and References
 
