@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include <set>
+#include <algorithm>
+#include <map>
 #include <string>
 #include <sstream>
 #include <string_view>
@@ -81,6 +82,7 @@ const int LXX_CONSTANTS_OTHER = 11;
 const int LXX_REGAMETHODS = 12;
 const int LXX_VARIABLES = 13;
 const int LXX_OPERATOR2 = 14;
+const int LXX_ERROR = 15;
 
 constexpr int inactiveFlag = 0x40;
 
@@ -110,9 +112,8 @@ private:
 			 wlConstants,
 			 wlConstantsOther;
 
-	ULONGLONG lastUpdate = ::GetTickCount64();
-	const unsigned int refreshTime = 30000; // lex all after 60 secs, to clear the variable buffer
-	std::set<std::string> setVariables;
+	// Map of variables and the declaration position
+	std::map<std::string,Sci_PositionU> mapVariables;
 };
 
 
@@ -257,21 +258,32 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 {
 	try 
 	{
+		TRACE("startPos=" << startPos << " length=" << length << " sumn=" << (startPos+length) << "\n");
 		LexAccessor styler(pAccess);
 
-		// Che3ck if we do a full reparse after some time to clear the variables set. So we get rid of deleted 
-		// variables here. The reparse starts at position 0 for the length of the doc.
-		auto now = ::GetTickCount64();
-		if (lastUpdate+refreshTime<=now)
+		// Clear list on a full scan
+		if (startPos==0)
 		{
-			// Clear cache and force a a complete lex
-			lastUpdate = now;
-			setVariables.clear();
-			startPos = 0;
-			length = styler.Length();
+			mapVariables.clear();
+		}
+		else
+		{
+			// Remove all map entries behind the startPos, they will be all recaclulated.
+			// With this trick, we get an error display, when a variable ist used without or before
+			// its declaration!
+			for (auto it =mapVariables.begin(); it!=mapVariables.end(); )
+			{
+				if (it->second>=startPos)
+					it = mapVariables.erase(it);
+				else
+					++it;
+			}
 		}
 
+		// 
 		StyleContext sc(startPos, length, LXX_DEFAULT, styler);
+
+		// Start states
 		std::string word;
 		bool commentAllowed = true;	
 
@@ -321,13 +333,16 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 				{
 					// But if we detected a variable with same name, we use the variable instead 
 					// of the reserved name. 
-					if (setVariables.find(word)!=setVariables.end())
+					if (mapVariables.find(word)!=mapVariables.end())
 					{
+						// a known variable, so show it.
 						sc.ChangeState(LXX_VARIABLES);
 					}
 					else
 					{
-						// Check all word lists for language defined words
+						// We might get here for a word a second time, that is not a variable.
+						// It would stay as LXX_WORD.
+						// But anyhow, we just recheck all word lists for language defined words.
 						struct {
 							const int id;
 							WordList* wl;
@@ -353,36 +368,52 @@ inline void SCI_METHOD LexerHomematic::Lex(Sci_PositionU startPos, Sci_Position 
 							}
 						}
 
-						// It might be a variable
-						if (parseForVariable)
+						// If we didn't found a reserved word, and we didn't found it in the variable list
+						// we stop here with an error.
+						if (sc.state==LXX_WORD)
+							// No reserved word, not avariable, must be an error.
+							sc.ChangeState(LXX_ERROR);
+						else if (parseForVariable)
 						{
-							auto curpos = sc.currentPos;
-
+							// It might be a variable, so we look ahead!
+						
 							// Skip whitespace
-							while (sc.More() &&  isspace(sc.ch))
-								sc.Forward();
-							if (sc.More() && (isalpha(sc.ch) || sc.ch=='_'))
+							int c = 0, i = 0;
+							while (isspace(c=sc.GetRelativeChar(i)))
+								++i;
+							if (isalpha(c=sc.GetRelativeCharacter(i)) || c=='_')
 							{
 								word.clear();
 								do
 								{
-									word += sc.ch;
-									sc.Forward();
-								} while (sc.More() && (iswalnum(sc.ch) || sc.ch=='_'));
+									word += c;
+									++i;
+								} while (iswalnum(c=sc.GetRelativeCharacter(i)) || c=='_');
 
-								// If we have a word, we set it into the list
-								if (word.length()>0)
-									setVariables.emplace(word);
+								// Now skip blanks and search for a semicolon
+								while (isspace(c=sc.GetRelativeChar(i)))
+									++i;
+
+								// Either end of statement or assignment
+								if (c==';' || c=='=')
+								{
+									// If we have a word that is inside a variable declaration, 
+									// we set it into the list
+									if (word.length()>0)
+									{
+										// We found a variable.
+										mapVariables.try_emplace(word,sc.currentPos);
+									}
+								}
 							}
 
-							// Get back to previous and parse from the start word position:
-							sc.currentPos = curpos;
-							sc.chPrev = sc.GetRelativeCharacter(-1);
-							sc.ch = sc.GetRelativeCharacter(0);
-							sc.chNext = sc.GetRelativeCharacter(1);
+							// We just continue at the parser position
 						}
 					}
-					// Continue normal.
+
+					// Continue normal, either the word is now in the variable list, or it is 
+					// treated a known variable, or it is not known and declared. In the last case
+					// we have an error.
 					sc.SetState(LXX_DEFAULT);
 					continue;
 				}

@@ -19,7 +19,7 @@
 
 extern FuncItem funcItem[nbFunc+1];
 extern NppData nppData;
-
+HINSTANCE _hModule;
 
 BOOL APIENTRY DllMain(HANDLE hModule, DWORD  reasonForCall, LPVOID /*lpReserved*/)
 {
@@ -28,6 +28,7 @@ BOOL APIENTRY DllMain(HANDLE hModule, DWORD  reasonForCall, LPVOID /*lpReserved*
 		switch (reasonForCall)
 		{
 			case DLL_PROCESS_ATTACH:
+				_hModule = static_cast<HINSTANCE>(hModule);
 				pluginInit(hModule);
 				break;
 

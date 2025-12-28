@@ -69,6 +69,6 @@ bool setCommand(size_t index, TCHAR *cmdName, PFUNCPLUGINCMD pFunc, ShortcutKey 
 //
 // Your plugin command functions
 //
-void helloDlg();
+void AboutDlg();
 
 #endif //PLUGINDEFINITION_H

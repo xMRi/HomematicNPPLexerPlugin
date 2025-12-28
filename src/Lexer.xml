@@ -30,6 +30,7 @@
       <WordsStyle name="OPERATOR" styleID="9" fgColor="00A8A8" bgColor="FFFFFF" fontName="" fontStyle="1" fontSize="" keywordClass="" />
       <WordsStyle name="VARIABLES" styleID="13" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="2" fontSize="" keywordClass="" />
       <WordsStyle name="OPERATOR2" styleID="14" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="1" fontSize="" keywordClass="" />
+      <WordsStyle name="ERROR" styleID="15" fgColor="008080" bgColor="FF0000" fontName="" fontStyle="3" fontSize="" keywordClass="" />
     </LexerType>
   </LexerStyles>
 </NotepadPlus>

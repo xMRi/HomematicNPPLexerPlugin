@@ -16,6 +16,7 @@
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "PluginDefinition.h"
+#include "FileVersionInfo.h"
 #include "menuCmdID.h"
 
 //
@@ -42,23 +43,18 @@ void pluginCleanUp()
 {
 }
 
-//
 // Initialization of your plugin commands
 // You should fill your plugins commands here
 void commandMenuInit()
 {
 
-    //--------------------------------------------//
-    //-- STEP 3. CUSTOMIZE YOUR PLUGIN COMMANDS --//
-    //--------------------------------------------//
-    // with function :
     // setCommand(int index,                      // zero based number to indicate the order of command
     //            TCHAR *commandName,             // the command name that you want to see in plugin menu
     //            PFUNCPLUGINCMD functionPointer, // the symbol of function (function pointer) associated with this command. The body should be defined below. See Step 4.
     //            ShortcutKey *shortcut,          // optional. Define a shortcut to trigger this command
     //            bool check0nInit                // optional. Make this menu item be checked visually
     //            );
-    setCommand(0, TEXT("Hello Notepad++"), helloDlg, NULL, false);
+    setCommand(0, TEXT("About.."), AboutDlg, NULL, false);
 }
 
 //
@@ -89,10 +85,17 @@ bool setCommand(size_t index, TCHAR *cmdName, PFUNCPLUGINCMD pFunc, ShortcutKey 
     return true;
 }
 
-//----------------------------------------------//
-//-- STEP 4. DEFINE YOUR ASSOCIATED FUNCTIONS --//
-//----------------------------------------------//
-void helloDlg()
+extern HINSTANCE _hModule;
+
+void AboutDlg()
 {
-    ::MessageBox(NULL, TEXT("Hello, Notepad++!"), TEXT("Hamematic Lexer Plugin"), MB_OK);
+    CFileVersionInfo info;
+    if (info.GetFileVersionInfo(_hModule))
+    {
+        std::stringstream ss;
+        ss  << info.GetFileDescription() << std::endl
+            << "Version: " << info.GetFileVersion() << std::endl
+            << "Copyright: " << info.GetLegalCopyright();
+        ::MessageBoxA(NULL, ss.str().c_str(), info.GetProductName().c_str(), MB_OK);
+    }
 }

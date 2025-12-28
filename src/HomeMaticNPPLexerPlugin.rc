@@ -32,9 +32,9 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "xMRi-Software - Germany"
             VALUE "FileDescription", "Homematic Lexer Plugin for Notepad++"
-            VALUE "FileVersion", "1.0.0.20"
+            VALUE "FileVersion", "1.1.0.23"
             VALUE "InternalName", "HomematicNPPLexerPlugin.dll"
-            VALUE "LegalCopyright", "Copyright 2024 by Martin Richter"
+            VALUE "LegalCopyright", "Copyright 2025 by xMRi-Software - Germany / Martin Richter"
             VALUE "OriginalFilename", "HomematicNPPLexerPlugin.dll"
             VALUE "ProductName", "Homematic NPP Lexer"
             VALUE "ProductVersion", "1.0.0.0"
