@@ -63,34 +63,34 @@ The `HomematicNPPLexerPlugin.vcxproj` file specifies:
 
 Copy the plugin DLL to:
 ```
-plugins\HomematicNPPLexerPlugin\HomematicNPPLexerPlugin.dll
+plugins\HomematicNPPLexer\HomematicNPPLexer.dll
 ```
 
 Copy the XML configuration file to:
 ```
-plugins\Config\HomematicNPPLexerPlugin.xml
+plugins\Config\HomematicNPPLexer.xml
 ```
 
 ### Installation Paths
 
 **64-bit installation**
 
-* `%PROGRAMFILES%\Notepad++\plugins\HomematicNPPLexerPlugin\`
+* `%PROGRAMFILES%\Notepad++\plugins\HomematicNPPLexer\`
 * `%PROGRAMFILES%\Notepad++\plugins\config\`
 
 **32-bit installation**
 
-* `%PROGRAMFILES(x86)%\Notepad++\plugins\HomematicNPPLexerPlugin\`
+* `%PROGRAMFILES(x86)%\Notepad++\plugins\HomematicNPPLexer\`
 * `%PROGRAMFILES(x86)%\Notepad++\plugins\config\`
 
 **Portable installation**
 
-* `<portable Notepad++ directory>\plugins\HomematicNPPLexerPlugin\`
+* `<portable Notepad++ directory>\plugins\HomematicNPPLexer\`
 * `<portable Notepad++ directory>\plugins\config`
 
 ## Verification
 
-After installation, **HomematicNPPLexerPlugin** should appear:
+After installation, **HomematicNPPLexer** should appear:
 
 * In the *Language* menu
 * At the bottom of *Settings → Style Configuration*
